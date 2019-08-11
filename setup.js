@@ -22,7 +22,6 @@ function chLoadAssets() {
 	// 	  document.head.appendChild(script);
 	//   };
 	// });
-	console.log('hi');
 	[
 	  'https://use.typekit.net/zzx2vim.css',
 	  'pest.css'
@@ -37,4 +36,19 @@ function chLoadAssets() {
 		  document.head.appendChild(link);
 	  };
 	});
+}
+
+function chhToggleChildren(el) {
+	if (el.classList.contains('expanded')) {
+		el.querySelector('.p-symbol').classList.remove('hidden');
+		el.querySelector('.t-symbol').classList.add('hidden');
+		el.classList.remove('expanded');
+		el.querySelector('[data-class="expandable"]').style.height = ""
+
+	} else {
+		el.querySelector('.p-symbol').classList.add('hidden');
+		el.querySelector('.t-symbol').classList.remove('hidden');
+		el.classList.add('expanded');
+		el.querySelector('[data-class="expandable"]').style.height = el.querySelector('[data-class="expandable"]').scrollHeight + 'px';
+	}
 }

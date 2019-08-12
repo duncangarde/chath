@@ -1,0 +1,20 @@
+PAGE 1 - 
+Grid Box ---
+Headings: Proxima Nova, Bold, 30px, #ffffff
+Body: Proxima Nova, Reg, 12px, #ffffff (Size might increase depending on what text they have)
+
+PAGE 2 - 
+Questions to Ask Boxes --- 
+Colour is 90 px high and full width of the paragraph area which I think is 891px according to my inspecting the element on their website.
+
+Headings: Proxima Nova, Bold, 36px, #ffffff
+Question Title: Proxima Nova, Bold, 36px, #31353D
+Body: Proxima Nova, Reg, 16px, #31353D (Size might increase depending on what text they have)
+
+Accordion Box should start with a 3px stroke in appropriate colour for desktop and go down for mobile
+
+Colour: 
+Political (Moss) 
+Economic (Aqua) 
+Societal (Lavender) 
+Technological (Lime) 

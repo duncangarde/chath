@@ -38,17 +38,28 @@ function chLoadAssets() {
 	});
 }
 
-function chhToggleChildren(el) {
+function chhToggleSiblings(el) {
+	var parent = el.parentNode;
+	var expandable = el.nextElementSibling;
 	if (el.classList.contains('expanded')) {
 		el.querySelector('.p-symbol').classList.remove('hidden');
 		el.querySelector('.t-symbol').classList.add('hidden');
 		el.classList.remove('expanded');
-		el.querySelector('[data-class="expandable"]').style.height = ""
-
+		expandable.style.height = "";
 	} else {
 		el.querySelector('.p-symbol').classList.add('hidden');
 		el.querySelector('.t-symbol').classList.remove('hidden');
 		el.classList.add('expanded');
-		el.querySelector('[data-class="expandable"]').style.height = el.querySelector('[data-class="expandable"]').scrollHeight + 'px';
+		var this_level_height = expandable.scrollHeight
+		var parent_level_height = 0
+		if (expandable.parentNode.classList.contains('expandable')) {
+			parent_level_height = expandable.parentNode.scrollHeight;
+			total_height = this_level_height + parent_level_height
+			expandable.parentNode.style.height = 'auto';
+		}
+		
+
+		expandable.style.height = this_level_height + 'px';
+
 	}
 }

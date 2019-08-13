@@ -57,21 +57,22 @@
 
 .chh-q-to-a {
 	margin-top: 1.5em;
-	padding: 2em 7.5em 2em 3em;
+	padding: 1.6em 7.5em 1.6em 2em;
 	position:relative;
 }
 
 .chh-subq-to-a {
 	position: relative;
 	font-size: 1.6em;
-	padding-left: 1.6875em;
+	font-weight: 600;
+	padding-left: 18px;
 	padding-top:1em;
 	padding-bottom: 1em;
 	padding-right: 5em;
 }
 
 .chh-subq-to-a > .chh-plus {
-	right: 1.3em;
+	right: 30px;
 	font-size: 1.6em;
 }
 
@@ -79,10 +80,25 @@
 	background-color: #fff;
 	margin-top: -3px;
 	position: relative;
-	font-size: 1.2em;
-	padding-left: 2.25em;
+	font-size: 1.6em;
+	font-weight: 400;
+	padding-left: 30px;
 	padding-right: 5em;
 }
+
+@media (min-width: 480px) {
+	.chh-subq-to-a, .chh-subq-t {
+	    font-size: 1.8em;
+	}
+}
+
+@media (min-width: 768px) {
+	.chh-subq-to-a, .chh-subq-t {
+	    font-size: 2em;
+	}
+}
+
+
 
 .chh-subq-t > div {
 	padding-bottom: 1em;
@@ -131,36 +147,68 @@
 
 .chh-qa-title {
 	font-size: 3.6em;
-	font-weight: 700;
+	font-weight: 600;
+}
+
+.chh-q-to-a-title {
+	font-weight: 600;
+	font-size: 2.4em;
 }
 
 .chh-qa-text {
 	margin-top: 1em;
-	font-size: 1.2em;
+	font-size: 1.4em;
 	font-weight: 400;
 	display: block;
 }
 
+@media (min-width: 480px) {
+	.chh-qa-text {
+	    font-size: 1.6em;
+	}
+}
+
+@media (min-width: 768px) {
+	.chh-qa-text {
+	    font-size: 1.8em;
+	}
+}
+
 .chh-grid-title {
 	font-size: 3em;
-	font-weight: 700;
+	font-weight: 600;
 	color: #fff;
 }
 
 .chh-grid-text {
 	margin-top: 1em;
-	font-size: 1.2em;
+	font-size: 1.4em;
 	font-weight: 400;
 	color: #fff;
 	display: block;
 }
 
+@media (min-width: 480px) {
+	.chh-grid-text {
+	    font-size: 1.6em;
+	}
+}
+
+@media (min-width: 768px) {
+	.chh-grid-text {
+	    font-size: 1.8em;
+	}
+}
+
+
 .chh-grid-icon {
 	color: #fff;
 	float:right;
+	margin-right: -10px;
+	margin-top: -10px;
 	display:inline-block;
-	width: 50px;
-	height: 50px;
+	width: 60px;
+	height: 60px;
 }
 
 .chh-q-icon {

@@ -42,15 +42,36 @@ function chLoadAssets(version) {
 	});
 }
 
-function chLoadHtml(setup, url) {
-	var xmlhttp;
-	if (window.XMLHttpRequest)
-	{
-	  xmlhttp = new XMLHttpRequest();
-	}
-	xmlhttp.open("GET",url,true);
-	xmlhttp.send();
-	setup.parentNode.innerHTML = xmlhttp.responseText;
+function chLoadHtml(setup, version, file_frag) {
+    var xmlhttp;
+    if (window.XMLHttpRequest) 
+    {
+        xmlhttp = new XMLHttpRequest();
+    } 
+    else 
+    {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function() 
+    {
+        if (xmlhttp.readyState == XMLHttpRequest.DONE ) 
+        {
+           if(xmlhttp.status == 200){
+           		var el = setup.parentNode;
+           		var elChild = document.createElement('div');
+           		elChild.classList.add('chh-container');
+           		elChild.innerHTML = xmlhttp.responseText;
+           		el.appendChild(elChild);
+           }
+           else {
+               alert('Error');
+           }
+        }
+    }
+
+    xmlhttp.open("GET", 'https://cdn.jsdelivr.net/gh/duncangarde/chath@' + version + '/' + file_frag + '_headless.html', true);
+    xmlhttp.send();
 }
 
 function chhToggleSiblings(el) {

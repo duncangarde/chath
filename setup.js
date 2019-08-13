@@ -1,5 +1,5 @@
 
-function chLoadAssets() {
+function chLoadAssets(version) {
 	// [
 	//   'https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/3.5.3/iframeResizer.min.js',
 	//   'file:///C:/sites/shelftaught/shelftaught-iframe-js/iframe-load-actions.js',
@@ -22,10 +22,14 @@ function chLoadAssets() {
 	// 	  document.head.appendChild(script);
 	//   };
 	// });
-	[
-	  'https://use.typekit.net/zzx2vim.css',
-	  'pest.css'
-	].forEach(function(href) {
+	var css_assets = ['https://use.typekit.net/zzx2vim.css']
+	if (version) {
+		css_assets.push('https://cdn.jsdelivr.net/gh/duncangarde/chath@' + version + '/pest.css')
+	} else {
+		css_assets.push('pest.css')
+	}
+	
+	css_assets.forEach(function(href) {
 	  if (document.querySelectorAll('[href="' + href +'"]').length > 0) {
 	  }
 	  else {
@@ -36,6 +40,17 @@ function chLoadAssets() {
 		  document.head.appendChild(link);
 	  };
 	});
+}
+
+function chLoadHtml(setup, url) {
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	{
+	  xmlhttp = new XMLHttpRequest();
+	}
+	xmlhttp.open("GET",url,true);
+	xmlhttp.send();
+	setup.parentNode.innerHTML = xmlhttp.responseText;
 }
 
 function chhToggleSiblings(el) {

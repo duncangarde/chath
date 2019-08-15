@@ -73,7 +73,7 @@ function chLoadHtml(setup, version, file_frag) {
     xmlhttp.open("GET", 'https://cdn.jsdelivr.net/gh/duncangarde/chath@' + version + '/' + file_frag + '_headless.html', true);
     xmlhttp.send();
 }
-
+		 	
 function chhToggleSiblings(el) {
 	var parent = el.parentNode;
 	var expandable = el.nextElementSibling;

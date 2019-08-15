@@ -217,9 +217,8 @@
 	display:inline-block;
 	width: 50px;
 	height: 50px;
+	margin-right: 23px;
 }
-
-
 
 .bkg-moss {
 	background-color: #4d917b;
@@ -237,9 +236,16 @@
 	background-color: #afbd21;
 }
 
-.chh-col.grid {
+.chh-grid-container {
+	display:flex;
+	flex-wrap: wrap;
+}
+
+.chh-grid-item {
 	padding: 3em;
 	border: 1px solid #fff;
+	box-sizing: border-box;
+	width: 100%;
 }
 /*grid*/
 .chh-container {
@@ -267,13 +273,13 @@
 }
 
 @media (min-width: 480px) {
-	.chh-col-xs-12 {
+	.chh-grid-item {
 	    width: 100%;
 	}
 }
 
 @media (min-width: 768px) {
-	.chh-col-sm-6 {
+	.chh-grid-item {
 	    width: 50%;
 	}
 }

@@ -1,7 +1,7 @@
 function chLoad(version, file_name, element) {
 	chLoadAssets(version);
 	chLoadHtml(element, version, file_name);
-	chLoadTriggers();
+	chhLoadTriggers();
 }
 
 function chLoadAssets(version) {

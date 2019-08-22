@@ -1,7 +1,6 @@
 function chLoad(version, file_name, element) {
 	chLoadAssets(version);
 	chLoadHtml(element, version, file_name);
-	chhLoadTriggers();
 }
 
 function chLoadAssets(version) {
@@ -46,6 +45,7 @@ function chLoadHtml(setup, version, file_frag) {
            		elChild.classList.add('chh-container');
            		elChild.innerHTML = xmlhttp.responseText;
            		el.appendChild(elChild);
+           		chhLoadTriggers();
            }
            else {
                alert('Error');

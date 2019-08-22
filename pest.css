@@ -31,6 +31,10 @@
 	-ms-transform: translateY(-50%);
 }
 
+.va-mid {
+	vertical-align: middle;
+}
+
 .hidden {
 	display:none !important;
 }
@@ -38,6 +42,9 @@
 .expandable.collapsed {
 	height: 0px;
 	overflow:hidden;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	border:none;
 }
 
 .expandable {
@@ -45,6 +52,74 @@
     line-height: 1;
     height: auto;
 }
+
+.chh-see-all {
+	display:inline-block;
+	padding: 0.5em 1.5em 0.5em 1.5em;
+	font-size: 1em;
+	cursor: pointer;
+}
+
+.ans-cont {
+	float:right;
+	display:inline-block;
+	margin-top: -0.5em;
+	margin-right: 0.3em;
+	margin-left: 1em;
+}
+
+.ans-sym {
+	margin-left: 0.1em;
+	margin-right: 0.1em;
+	font-style: normal;
+	background-color: white;
+	width: 36px;
+	height: 36px;
+	border-radius: 20px;
+	border: 2px solid;
+	text-align: center;
+	display: inline-block;
+	line-height: 2;
+	cursor: pointer;
+}
+
+.ans-sym.picked {
+	border-color: #fff;
+	color: #fff;
+}
+
+.cl-moss > .ans-sym {
+	border-color: #4d917b;
+}
+
+.cl-aqua > .ans-sym {
+	border-color: #81cec1;
+}
+
+.cl-lav > .ans-sym {
+	border-color: #917578;
+}
+
+.cl-lime > .ans-sym {
+	border-color: #afbd21;
+}
+
+.cl-moss > .ans-sym.picked {
+	background-color: #4d917b;
+}
+
+.cl-aqua > .ans-sym.picked {
+	background-color: #81cec1;
+}
+
+.cl-lav > .ans-sym.picked {
+	background-color: #917578;
+}
+
+.cl-lime > .ans-sym.picked {
+	background-color: #afbd21;
+}
+
 
 .chh-plus {
 	background-color: #fff;
@@ -66,9 +141,9 @@
 	font-size: 1.6em;
 	font-weight: 600;
 	padding-left: 18px;
-	padding-top:1em;
+	padding-top: 1em;
 	padding-bottom: 1em;
-	padding-right: 5em;
+	padding-right: 1em;
 }
 
 .chh-subq-to-a > .chh-plus {
@@ -78,22 +153,21 @@
 
 .chh-subq-t {
 	background-color: #fff;
-	margin-top: -3px;
 	position: relative;
-	font-size: 1.6em;
 	font-weight: 400;
-	padding-left: 30px;
-	padding-right: 5em;
+	line-height:1;
+	display: inline-block;
+	margin-top: 0.5em;
 }
 
 @media (min-width: 480px) {
-	.chh-subq-to-a, .chh-subq-t {
+	.chh-subq-to-a {
 	    font-size: 1.8em;
 	}
 }
 
 @media (min-width: 768px) {
-	.chh-subq-to-a, .chh-subq-t {
+	.chh-subq-to-a {
 	    font-size: 2em;
 	}
 }

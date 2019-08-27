@@ -156,8 +156,45 @@
 	font-size: 1.6em;
 }
 
+.chh-subq-to-a > span:not(.ans-cont) {
+	display: inline-block;
+	width: 38%;
+}
+
+@media (min-width: 360px) {
+	.chh-subq-to-a > span:not(.ans-cont) {
+	    width: 46%;
+	}
+}
+
+@media (min-width: 400px) {
+	.chh-subq-to-a > span:not(.ans-cont) {
+	    width: 52%;
+	}
+}
+
+@media (min-width: 450px) {
+	.chh-subq-to-a > span:not(.ans-cont) {
+	    width: 59%;
+	}
+}
+
+@media (min-width: 550px) {
+	.chh-subq-to-a > span:not(.ans-cont) {
+	    width: 65%;
+	}
+}
+
+@media (min-width: 768px) {
+	.chh-subq-to-a > span:not(.ans-cont) {
+	    display:inline;
+	}
+}
+
+
+
+
 .chh-subq-t {
-	background-color: #fff;
 	position: relative;
 	font-weight: 400;
 	line-height:1;

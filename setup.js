@@ -4,6 +4,17 @@ function chLoad(version, file_name, element) {
 }
 
 function chLoadAssets(version) {
+
+	// [
+	//   'https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js',
+	//   'https://cdn.jsdelivr.net/npm/html2canvas@v1.0.0-rc.3/dist/html2canvas.min.js',
+	// ].forEach(function(src) {
+	// 	  var script = document.createElement('script');
+	// 	  script.src = src;
+	// 	  script.async = false;
+	// 	  document.head.appendChild(script);
+	// });
+
 	var css_assets = ['https://use.typekit.net/zzx2vim.css']
 	if (version) {
 		css_assets.push('https://cdn.jsdelivr.net/gh/duncangarde/chath@' + version + '/pest.css')
@@ -227,5 +238,28 @@ function slideToggle(target, duration = 300) {
     } else {
       return slideUp(target, duration);
     }
+}
+
+
+function downloadPDF() {
+	printable = document.getElementById('chh-qs');
+	collapseds = printable.querySelectorAll('.collapsed');
+	for (let i = 0; i < collapseds.length; i++) {
+	 	collapseds[i].classList.remove('collapsed');
+	};
+
+	topics = printable.querySelectorAll('.chh-q-to-a');
+	for (let i = 0; i < topics.length; i++) {
+	 	topics[i].click();
+	};
+
+
+	html2canvas(printable).then(function(canvas) {
+		debugger;
+    	var img = canvas.toDataURL("image/png");
+    	var doc = new jsPDF();
+    	doc.addImage(img, 'JPEG', 20 , 20);
+    	doc.save;
+	});
 }
 

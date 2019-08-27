@@ -68,23 +68,39 @@ function chhLoadTriggers() {
 	var see_alls = document.querySelectorAll(".chh-see-all");
 	 for (let i = 0; i < see_alls.length; i++) {
 	     see_alls[i].addEventListener("click", function() {
+
 	     	var cont = this.closest('[data-class="chh-qa-section"]');
-	     	var collapseds = cont.querySelectorAll('[data-class="ans-cont"]');
+	     	collapseds = cont.querySelectorAll('.collapsed');
+	     	if (collapseds.length) {
+			 this.innerHTML = "Close all"
 			 for (let i = 0; i < collapseds.length; i++) {
-			     chhExpandSibling(collapseds[i].parentNode)
-			 };
+			 	collapseds[i].classList.remove('collapsed');
+			 }
+	     	} else {
+	     		this.innerHTML = "See all";
+	     		cont.querySelector('.chh-q-to-a').click();  		
+	     	}
 	     });
 	 }
 }
 
+
 function chhAppearSeeAll(el) {
 	var cont = el.closest('[data-class="chh-qa-section"]');
-	cont.querySelector('.chh-see-all').classList.remove('hidden')
+	see_all = cont.querySelector('.chh-see-all');
+	collapseds = cont.querySelectorAll('.collapsed');
+	if (collapseds.length) {
+		see_all.innerHTML = "See all"
+	} else {
+		see_all.innerHTML = "Close all"
+	}
+	see_all.classList.remove('hidden');
 }
 
 function chhDisappearSeeAll(el) {
 	var cont = el.closest('[data-class="chh-qa-section"]');
-	cont.querySelector('.chh-see-all').classList.add('hidden')
+	see_all = cont.querySelector('.chh-see-all');
+	see_all.classList.add('hidden');
 }
 
 function chhPickSelf(el) {
@@ -99,22 +115,21 @@ function chhPickSelf(el) {
 	};
 }
 
+function chhToggleQuestions (el) {
+	var expandable = el.nextElementSibling;
+	if (window.getComputedStyle(expandable).display === 'none') {
+		chhAppearSeeAll(el);
+	} else {
+		chhDisappearSeeAll(el);
+	}
+	slideToggle(expandable);
+}
+
 function chhExpandSibling(el) {
 	var parent = el.parentNode;
+	parent.style.height = "auto";
 	var expandable = el.nextElementSibling;
-	if (expandable && !el.classList.contains('expanded')) 
-	{
-		el.classList.add('expanded');
-		var this_level_height = expandable.scrollHeight
-		var parent_level_height = 0
-		if (expandable.parentNode.classList.contains('expandable')) {
-			parent_level_height = expandable.parentNode.scrollHeight;
-			total_height = this_level_height + parent_level_height
-			expandable.parentNode.style.height = 'auto';
-		}
-		expandable.style.height = this_level_height + 'px';
-		expandable.classList.remove('collapsed');
-	}
+	if (expandable && window.getComputedStyle(expandable).display === 'none') {slideDown(expandable)};
 }
 
 		 	
@@ -147,3 +162,70 @@ function chhToggleSiblings(el) {
 	expandable.style.height = this_level_height + 'px';
 	}
 }
+
+function slideUp(target, duration=200) {
+    target.style.transitionProperty = 'height, margin, padding';
+    target.style.transitionDuration = duration + 'ms';
+    target.style.boxSizing = 'border-box';
+    target.style.height = target.offsetHeight + 'px';
+    target.offsetHeight;
+    target.style.overflow = 'hidden';
+    target.style.height = 0;
+    target.style.paddingTop = 0;
+    target.style.paddingBottom = 0;
+    target.style.marginTop = 0;
+    target.style.marginBottom = 0;
+    window.setTimeout( () => {
+      target.style.display = 'none';
+      target.style.removeProperty('height');
+      target.style.removeProperty('padding-top');
+      target.style.removeProperty('padding-bottom');
+      target.style.removeProperty('margin-top');
+      target.style.removeProperty('margin-bottom');
+      target.style.removeProperty('overflow');
+      target.style.removeProperty('transition-duration');
+      target.style.removeProperty('transition-property');
+      //alert("!");
+    }, duration);
+  }
+
+function slideDown(target, duration=300) {
+    target.style.removeProperty('display');
+    let display = window.getComputedStyle(target).display;
+
+    if (display === 'none')
+      display = 'block';
+
+    target.style.display = display;
+    let height = target.offsetHeight;
+    target.style.overflow = 'hidden';
+    target.style.height = 0;
+    target.style.paddingTop = 0;
+    target.style.paddingBottom = 0;
+    target.style.marginTop = 0;
+    target.style.marginBottom = 0;
+    target.offsetHeight;
+    target.style.boxSizing = 'border-box';
+    target.style.transitionProperty = "height, margin, padding";
+    target.style.transitionDuration = duration + 'ms';
+    target.style.height = height + 'px';
+    target.style.removeProperty('padding-top');
+    target.style.removeProperty('padding-bottom');
+    target.style.removeProperty('margin-top');
+    target.style.removeProperty('margin-bottom');
+    window.setTimeout( () => {
+      target.style.removeProperty('height');
+      target.style.removeProperty('overflow');
+      target.style.removeProperty('transition-duration');
+      target.style.removeProperty('transition-property');
+    }, duration);
+  }
+
+function slideToggle(target, duration = 300) {
+    if (window.getComputedStyle(target).display === 'none') {
+      return slideDown(target, duration);
+    } else {
+      return slideUp(target, duration);
+    }
+}
+

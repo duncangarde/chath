@@ -40,15 +40,11 @@
 }
 
 .expandable.collapsed {
-	height: 0px;
-	overflow:hidden;
-	padding-top: 0px;
-	padding-bottom: 0px;
-	border:none;
+	display:none;
 }
 
 .expandable {
-    transition: height 0.3s ease-in-out;
+    transition: max-height 0.5s ease-in-out;
     line-height: 1;
     height: auto;
 }
@@ -66,9 +62,17 @@
 	margin-top: -0.5em;
 	margin-right: 0.3em;
 	margin-left: 1em;
+	margin-bottom: 0.3em;
+}
+
+.ans-sym:last-child {
+	font-size: 16px;
+	line-height: 2.4;
+	vertical-align:top;
 }
 
 .ans-sym {
+	font-size: 20px;
 	margin-left: 0.1em;
 	margin-right: 0.1em;
 	font-style: normal;
@@ -144,6 +148,7 @@
 	padding-top: 1em;
 	padding-bottom: 1em;
 	padding-right: 1em;
+	max-height: 250px;
 }
 
 .chh-subq-to-a > .chh-plus {
@@ -156,9 +161,17 @@
 	position: relative;
 	font-weight: 400;
 	line-height:1;
-	display: inline-block;
+	display: block;
 	margin-top: 0.5em;
 }
+
+@media (min-width: 480px) {
+	.chh-subq-t {
+	    padding-right: 8em;
+	}
+}
+
+
 
 @media (min-width: 480px) {
 	.chh-subq-to-a {

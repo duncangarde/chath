@@ -273,7 +273,7 @@ function savePDF () {
 		window.scroll({top: y})
 		var opt = {
 		  margin:       10,
-		  filename:     'myfile.pdf',
+		  filename:     'pest-toolkit.pdf',
 		  html2canvas: {scale: 2},
 		  jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait'},
 		  pagebreak: { mode: 'css'}

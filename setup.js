@@ -5,15 +5,16 @@ function chLoad(version, file_name, element) {
 
 function chLoadAssets(version) {
 
-	// [
-	//   'https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js',
-	//   'https://cdn.jsdelivr.net/npm/html2canvas@v1.0.0-rc.3/dist/html2canvas.min.js',
-	// ].forEach(function(src) {
-	// 	  var script = document.createElement('script');
-	// 	  script.src = src;
-	// 	  script.async = false;
-	// 	  document.head.appendChild(script);
-	// });
+	[
+	  'https://unpkg.com/jspdf@latest/dist/jspdf.min.js',
+	  'https://cdn.jsdelivr.net/npm/html2canvas@v1.0.0-rc.3/dist/html2canvas.min.js',
+	  'https://cdn.jsdelivr.net/gh/eKoopmans/html2pdf@v0.9.1/dist/html2pdf.min.js',
+	].forEach(function(src) {
+		  var script = document.createElement('script');
+		  script.src = src;
+		  script.async = false;
+		  document.head.appendChild(script);
+	});
 
 	var css_assets = ['https://use.typekit.net/zzx2vim.css']
 	if (version) {
@@ -69,11 +70,13 @@ function chLoadHtml(setup, version, file_frag) {
 }
 
 function chhLoadTriggers() {
+
 	var answers = document.querySelectorAll(".ans-sym");
 	 for (let i = 0; i < answers.length; i++) {
 	     answers[i].addEventListener("click", function() {
 	       chhExpandSibling(this.parentNode.parentNode);
 	       chhPickSelf(this);
+	       chhPickTwins(this);
 	     });
 	 }
 	var see_alls = document.querySelectorAll(".chh-see-all");
@@ -114,6 +117,15 @@ function chhDisappearSeeAll(el) {
 	see_all.classList.add('hidden');
 }
 
+function chhPickTwins(el) {
+	var answer_blocks = document.getElementById('view_container').querySelectorAll('.ans-cont');
+	var print_blocks = document.getElementById('pdf_container').querySelectorAll('.ans-cont');
+
+	for (let i = 0; i < answer_blocks.length; i++) {
+	 	print_blocks[i].innerHTML = answer_blocks[i].innerHTML
+	 }
+}
+
 function chhPickSelf(el) {
 	var self_active = el.classList.contains('picked');
 	var us = el.parentNode.children;
@@ -140,7 +152,19 @@ function chhExpandSibling(el) {
 	var parent = el.parentNode;
 	parent.style.height = "auto";
 	var expandable = el.nextElementSibling;
-	if (expandable && window.getComputedStyle(expandable).display === 'none') {slideDown(expandable)};
+	if (expandable && window.getComputedStyle(expandable).display === 'none') {
+		slideDown(expandable)
+		expandable.classList.remove('collapsed');
+	};
+	cont = el.closest('[data-class="chh-qa-section"]');
+	collapseds = cont.querySelectorAll('.collapsed');
+	if (collapseds.length) {
+		see_all.innerHTML = "See all"
+	} else {
+		see_all.innerHTML = "Close all"
+	}
+
+
 }
 
 		 	
@@ -155,7 +179,7 @@ function chhToggleSiblings(el) {
 		el.classList.remove('expanded');
 		expandable.style.height = "";
 	} 
-	else 
+	// else 
 	{
 		chhAppearSeeAll(el);
 		el.querySelector('.p-symbol').classList.add('hidden');
@@ -240,26 +264,20 @@ function slideToggle(target, duration = 300) {
     }
 }
 
+function savePDF () {
+		view = document.getElementById('view_container');
+		view.classList.add('hidden')
+		container = document.getElementById('pdf_container');
+		container.classList.remove('hidden');
+		y = container.getBoundingClientRect().top + window.scrollY;
+		window.scroll({top: y})
+		var opt = {
+		  margin:       10,
+		  filename:     'myfile.pdf',
+		  html2canvas: {scale: 2},
+		  jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait'},
+		  pagebreak: { mode: 'css'}
+		};
 
-function downloadPDF() {
-	printable = document.getElementById('chh-qs');
-	collapseds = printable.querySelectorAll('.collapsed');
-	for (let i = 0; i < collapseds.length; i++) {
-	 	collapseds[i].classList.remove('collapsed');
-	};
-
-	topics = printable.querySelectorAll('.chh-q-to-a');
-	for (let i = 0; i < topics.length; i++) {
-	 	topics[i].click();
-	};
-
-
-	html2canvas(printable).then(function(canvas) {
-		debugger;
-    	var img = canvas.toDataURL("image/png");
-    	var doc = new jsPDF();
-    	doc.addImage(img, 'JPEG', 20 , 20);
-    	doc.save;
-	});
+		html2pdf().set(opt).from(container).save().then(function() {container.classList.add('hidden');view.classList.remove('hidden')});	
 }
-

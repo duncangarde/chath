@@ -39,6 +39,29 @@
 	display:none !important;
 }
 
+.chh-download-button {
+	font-size: 2em;
+	color: #fff;
+	cursor: pointer;
+	background-color: #31353D;
+	padding: 1em 3em 1em 1em;
+	position:relative;
+	display: inline-block;
+
+}
+
+.chh-download-button:hover {
+	color: #e8833c;
+}
+
+.chh-forward-icon {
+	color: #e8833c;
+	display: inline-block;
+	width: 20px;
+	right: 1em;
+}
+
+
 .expandable.collapsed {
 	display:none;
 }
@@ -66,24 +89,26 @@
 }
 
 .ans-sym:last-child {
-	font-size: 16px;
-	line-height: 2.4;
+	font-size: 0.8em;
+	width: 2.25em;
+	height: 2.25em;
+	line-height: 2.4em;
 	vertical-align:top;
 }
 
 .ans-sym {
-	font-size: 20px;
+	font-size: 1em;
 	margin-left: 0.1em;
 	margin-right: 0.1em;
 	font-style: normal;
 	background-color: white;
-	width: 36px;
-	height: 36px;
-	border-radius: 20px;
+	width: 1.8em;
+	height: 1.8em;
+	border-radius: 2em;
 	border: 2px solid;
 	text-align: center;
 	display: inline-block;
-	line-height: 2;
+	line-height: 1.9em;
 	cursor: pointer;
 }
 

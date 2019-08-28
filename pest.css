@@ -59,6 +59,7 @@
 	display: inline-block;
 	width: 20px;
 	right: 1em;
+	line-height:0.5;
 }
 
 
@@ -75,7 +76,7 @@
 .chh-see-all {
 	display:inline-block;
 	padding: 0.5em 1.5em 0.5em 1.5em;
-	font-size: 1em;
+	font-size: 1.5em;
 	cursor: pointer;
 }
 
@@ -97,10 +98,11 @@
 }
 
 .ans-sym {
+	font-family: proxima-nova, sans-serif !important;
 	font-size: 1em;
 	margin-left: 0.1em;
 	margin-right: 0.1em;
-	font-style: normal;
+	font-style: normal !important;
 	background-color: white;
 	width: 1.8em;
 	height: 1.8em;

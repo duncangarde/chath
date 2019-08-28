@@ -142,8 +142,12 @@ function chhToggleQuestions (el) {
 	var expandable = el.nextElementSibling;
 	if (window.getComputedStyle(expandable).display === 'none') {
 		chhAppearSeeAll(el);
+		el.querySelector('.p-symbol').classList.add('hidden');
+		el.querySelector('.t-symbol').classList.remove('hidden');
 	} else {
 		chhDisappearSeeAll(el);
+		el.querySelector('.p-symbol').classList.remove('hidden');
+		el.querySelector('.t-symbol').classList.add('hidden');
 	}
 	slideToggle(expandable);
 }

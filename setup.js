@@ -269,19 +269,19 @@ function slideToggle(target, duration = 300) {
 }
 
 function savePDF () {
-		view = document.getElementById('view_container');
-		view.classList.add('hidden')
-		container = document.getElementById('pdf_container');
-		container.classList.remove('hidden');
-		y = container.getBoundingClientRect().top + window.scrollY;
-		window.scroll({top: y})
-		var opt = {
-		  margin:       10,
-		  filename:     'pest-toolkit.pdf',
-		  html2canvas: {scale: 2},
-		  jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait'},
-		  pagebreak: { mode: 'css'}
-		};
+	current_y = window.pageYOffset;
+	view = document.getElementById('view_container');
+	view.classList.add('hidden')
+	container = document.getElementById('pdf_container');
+	container.classList.remove('hidden');
+	window.scrollTo(0,0);
+	var opt = {
+	  margin:       10,
+	  filename:     'pest-toolkit.pdf',
+	  html2canvas: {scale: 2},
+	  jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait'},
+	  pagebreak: { mode: 'css'}
+	};
 
-		html2pdf().set(opt).from(container).save().then(function() {container.classList.add('hidden');view.classList.remove('hidden')});	
+	html2pdf().set(opt).from(container).save().then(function() {container.classList.add('hidden');view.classList.remove('hidden');window.scrollTo(0, current_y)});	
 }
